@@ -58,11 +58,9 @@ def main():
     problems = check_images()
 
     if problems:
-        subject = "Letonika monitorings: problēmas ar attēliem"
+        subject = "Letonika: problēmas ar attēliem"
 
         body = (
-            "LET0NIKA AUTOMĀTISKĀ PĀRBAUDE\n"
-            "----------------------------------\n\n"
             f"Statuss: ATRASTAS PROBLĒMAS\n"
             f"Lapa: {safe_text_url(URL)}\n"
             f"Problēmu skaits: {len(problems)}\n\n"
@@ -76,11 +74,9 @@ def main():
         print(body)
 
     else:
-        subject = "Letonika monitorings: viss kārtībā"
+        subject = "Letonika: visi attēli redzami"
 
         body = (
-            "LET0NIKA AUTOMĀTISKĀ PĀRBAUDE\n"
-            "----------------------------------\n\n"
             f"Statuss: VISS KĀRTĪBĀ\n"
             f"Lapa: {safe_text_url(URL)}\n"
             "Visi attēli ielādējas korekti.\n"
