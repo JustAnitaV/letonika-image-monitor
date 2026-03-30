@@ -58,7 +58,7 @@ def main():
     problems = check_images()
 
     if problems:
-        subject = "⚠️ Letonika: atrasti bojāti attēli"
+        subject = "Letonika monitorings: problēmas ar attēliem"
 
         body = (
             "LET0NIKA AUTOMĀTISKĀ PĀRBAUDE\n"
@@ -76,7 +76,7 @@ def main():
         print(body)
 
     else:
-        subject = "✅ Letonika: viss kārtībā"
+        subject = "Letonika monitorings: viss kārtībā"
 
         body = (
             "LET0NIKA AUTOMĀTISKĀ PĀRBAUDE\n"
