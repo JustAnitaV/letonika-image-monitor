@@ -32,7 +32,7 @@ def check_images():
                 )
 
                 if not data["complete"] or data["naturalWidth"] == 0 or data["naturalHeight"] == 0:
-                    problems.append(f"{i}. {data['src']}")
+                    problems.append(f"{i}. {safe_text_url(data['src'])}")
             except Exception as e:
                 problems.append(f"{i}. Kļūda, pārbaudot attēlu: {e}")
 
