@@ -56,11 +56,37 @@ def main():
     problems = check_images()
 
     if problems:
-        body = "Atrastas problēmas ar attēliem:\\n\\n" + "\\n".join(problems)
-        send_email("Letonika: atrastas problēmas ar attēliem", body)
+        subject = "⚠️ Letonika: atrasti bojāti attēli"
+
+        body = (
+            "LET0NIKA AUTOMĀTISKĀ PĀRBAUDE\n"
+            "----------------------------------\n\n"
+            f"Statuss: ATRASTAS PROBLĒMAS\n"
+            f"Lapa: {URL}\n"
+            f"Problēmu skaits: {len(problems)}\n\n"
+            "Bojātie attēli:\n"
+            "----------------------------------\n"
+            + "\n".join(problems)
+            + "\n\nRīcība: pārbaudi attēlus lapā."
+        )
+
+        send_email(subject, body)
         print(body)
+
     else:
-        print("Viss kārtībā. E-pasts netika sūtīts.")
+        subject = "✅ Letonika: viss kārtībā"
+
+        body = (
+            "LET0NIKA AUTOMĀTISKĀ PĀRBAUDE\n"
+            "----------------------------------\n\n"
+            f"Statuss: VISS KĀRTĪBĀ\n"
+            f"Lapa: {URL}\n\n"
+            "Visi attēli ielādējas korekti.\n"
+            "Nav konstatētas problēmas."
+        )
+
+        send_email(subject, body)
+        print(body)
 
 
 if __name__ == "__main__":
