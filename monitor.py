@@ -51,6 +51,8 @@ def send_email(subject, body):
         server.login(SMTP_USER, SMTP_PASS)
         server.send_message(msg)
 
+def safe_text_url(url):
+    return url.replace("https://", "https[:]//").replace("http://", "http[:]//")
 
 def main():
     problems = check_images()
@@ -62,7 +64,7 @@ def main():
             "LET0NIKA AUTOMĀTISKĀ PĀRBAUDE\n"
             "----------------------------------\n\n"
             f"Statuss: ATRASTAS PROBLĒMAS\n"
-            f"Lapa: {URL}\n"
+            f"Lapa: {safe_text_url(URL)}\n"
             f"Problēmu skaits: {len(problems)}\n\n"
             "Bojātie attēli:\n"
             "----------------------------------\n"
@@ -80,7 +82,7 @@ def main():
             "LET0NIKA AUTOMĀTISKĀ PĀRBAUDE\n"
             "----------------------------------\n\n"
             f"Statuss: VISS KĀRTĪBĀ\n"
-            f"Lapa: {URL}\n\n"
+            f"Lapa: {safe_text_url(URL)}\n"
             "Visi attēli ielādējas korekti.\n"
             "Nav konstatētas problēmas."
         )
