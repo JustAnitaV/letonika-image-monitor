@@ -48,7 +48,12 @@ def check_images():
                 )
 
                 if not data["complete"] or data["naturalWidth"] == 0 or data["naturalHeight"] == 0:
-                    problems.append(f"{i}. {safe_text_url(data['src'])}")
+                    context_text = data.get("alt") or data.get("parentText") or data.get("grandParentText") or "Konteksts nav atrasts"
+                    problems.append(
+                        f"{i}. {safe_text_url(data['src'])}\n"
+                        f"   Konteksts: {context_text}"
+                    )
+   
             except Exception as e:
                 problems.append(f"{i}. Kļūda, pārbaudot attēlu: {e}")
 
