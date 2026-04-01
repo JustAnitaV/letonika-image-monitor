@@ -23,13 +23,29 @@ def check_images():
         for i, img in enumerate(images, start=1):
             try:
                 data = img.evaluate(
-                    """(el) => ({
-                        src: el.currentSrc || el.src || "",
-                        complete: !!el.complete,
-                        naturalWidth: el.naturalWidth || 0,
-                        naturalHeight: el.naturalHeight || 0
-                    })"""
-                )
+    """(el) => {
+        const parentText = el.parentElement ? (el.parentElement.innerText || "") : "";
+        const grandParentText = el.parentElement && el.parentElement.parentElement
+            ? (el.parentElement.parentElement.innerText || "")
+            : "";
+
+        const clean = (txt) =>
+            (txt || "")
+                .replace(/\\s+/g, " ")
+                .trim()
+                .slice(0, 200);
+
+        return {
+            src: el.currentSrc || el.src || "",
+            alt: el.alt || "",
+            complete: !!el.complete,
+            naturalWidth: el.naturalWidth || 0,
+            naturalHeight: el.naturalHeight || 0,
+            parentText: clean(parentText),
+            grandParentText: clean(grandParentText)
+        };
+    }"""
+)
 
                 if not data["complete"] or data["naturalWidth"] == 0 or data["naturalHeight"] == 0:
                     problems.append(f"{i}. {safe_text_url(data['src'])}")
