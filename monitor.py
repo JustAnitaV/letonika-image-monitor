@@ -89,6 +89,7 @@ def main():
             "----------------------------------\n"
             + "\n".join(problems)
             + "\n\nRīcība: pārbaudi attēlus lapā."
+            + "\n\nhttps://letonika.lv/private/Sites.aspx"
         )
 
         send_email(subject, body)
