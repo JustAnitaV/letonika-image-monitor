@@ -89,6 +89,7 @@ def main():
             "----------------------------------\n"
             + "\n".join(problems)
             + "\n\nRīcība: pārbaudi attēlus lapā."
+            + "\n\nmanager: letonika.lv/private/Sites.aspx"
             + "\n\nhttps://letonika.lv/private/Sites.aspx"
         )
 
