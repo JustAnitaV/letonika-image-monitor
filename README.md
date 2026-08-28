@@ -1,1 +1,1 @@
-Letonika image monitor
+Letonika image monitor - daily
